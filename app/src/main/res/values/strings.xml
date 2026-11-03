@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">Сохранить</string>
+    <string name="nameHint">Имя</string>
+    <string name="stateHint">Статус</string>
+    <string name="ageHint">Возраст</string>
+    <string name="app_name">UserApp</string>
+</resources>
