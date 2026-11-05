@@ -1,13 +1,20 @@
 package com.example.userapp;
 
 public class Transform {
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String LOGIN = "login";
+    public static final String PASSWORD = "password";
+
     public static int parseIntOrDefault(String whatParse, int defaultValue) {
-        int parse;
         try {
-            parse = Integer.parseInt(whatParse);
-        } catch (Exception NumberFormatException) {
-            parse = defaultValue;
+            return Integer.parseInt(whatParse);
+        } catch (Exception e) {
+            return defaultValue;
         }
-        return parse;
+    }
+
+    public static Boolean StringNoNull(String string) {
+        if (string == null) return false;
+        else return string.length() != 0;
     }
 }
