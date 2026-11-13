@@ -9,6 +9,7 @@
         android:id="@+id/imageForLoaded"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
 
 </LinearLayout>

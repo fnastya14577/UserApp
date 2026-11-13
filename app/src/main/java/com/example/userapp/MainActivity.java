@@ -1,7 +1,10 @@
 package com.example.userapp;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
@@ -29,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         new UserStaticInfo();
         Init();
+
+        ChatActivity.createNotificationChannel(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
     }
 
     private void Init() {
@@ -90,9 +101,10 @@ public class MainActivity extends AppCompatActivity {
             currentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    positionActiveUser = position;
-                    InitPanel(getItem(position));
-                    UserVisibility(true);
+                    Intent intent = new Intent(parent.getContext(), ChatActivity.class);
+                    // ВОТ ЗДЕСЬ ИСПРАВЛЕНО: добавлен "_" + position в конце
+                    intent.putExtra("chat_id", "chat_" + getItem(position).getName() + "_" + position);
+                    parent.getContext().startActivity(intent);
                 }
             });
 

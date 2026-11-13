@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,7 @@
         <activity android:name=".LoadedUserDataActivity" android:screenOrientation="portrait" />
         <activity android:name=".MainActivity" />
         <activity android:name=".UserActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ChatActivity" android:screenOrientation="portrait" />
 
     </application>
 </manifest>
